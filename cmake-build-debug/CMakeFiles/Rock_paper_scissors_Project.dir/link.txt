@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/Rock_paper_scissors_Project.dir/main.cpp.o -o Rock_paper_scissors_Project
