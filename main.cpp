@@ -189,9 +189,27 @@ void ResetScreen() {
     system("color 0F");
 }
 
+void StartGame() {
+    char PlayAgain = 'Y';
+
+    do {
+        ResetScreen();
+        stGameResults GameResults = PlayGame(ReadHowManyRounds());
+        ShowGameOverScreen();
+        ShowFinalGameResults(GameResults);\
+
+        cout << endl << Tabs(3) << "Do You Want To Play Again ? Y/N";
+        cin >> PlayAgain;
+    } while (PlayAgain == 'Y' || PlayAgain == 'y');
+}
 
 
 int main() {
 
+    srand(unsigned)time(NULL);
+
+    StartGame();
+
+    return 0;
 
 }
