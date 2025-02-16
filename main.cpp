@@ -174,7 +174,20 @@ void ShowFinalGameResults(stGameResults GameResults) {
     SetWinnerScreenColor(GameResults.GameWinner);
 }
 
+short ReadHowManyRounds() {
+    short GameRounds = 1;
 
+    do {
+        cout << "How Many Rounds 1 to 10 ? \n";
+        cin >> GameRounds;
+    } while (GameRounds < 1 || GameRounds > 10);
+    return GameRounds;
+}
+
+void ResetScreen() {
+    system("cls");
+    system("color 0F");
+}
 
 
 
