@@ -16,7 +16,7 @@ struct  stRoundInfo {
 struct stGameResults {
     short GameRounds = 0;
     short PlayerWinTimes = 0;
-    short Computer2WinTimes = 0;
+    short ComputerWinTimes = 0;
     short DrawTimes = 0;
     enWinner GameWinner;
     string WinnerName = "";
@@ -101,7 +101,7 @@ stGameResults FillGameResults(int GameRounds, short PlayerWinTimes, short Comput
 
     GameResults.GameRounds = GameRounds;
     GameResults.PlayerWinTimes = PlayerWinTimes;
-    GameResults.Computer2WinTimes = ComputerWinTimes;
+    GameResults.ComputerWinTimes = ComputerWinTimes;
     GameResults.DrawTimes = DrawTimes;
     GameResults.WinnerName = WhoWonTheGame(PlayerWinTimes, ComputerWinTimes);
     GameResults.WinnerName = WinnerName(GameResults.GameWinner);
@@ -145,6 +145,36 @@ stGameResults PlayGame(short HowManyRounds) {
     }
     return FillGameResults(HowManyRounds, PlayerWinTimes, ComputerWinTimes, DrawTimes);
 }
+
+string Tabs (short NumberOfTabs) {
+    string t = "";
+
+    for (int i = 1; i < NumberOfTabs; i++) {
+        t = t + "\t";
+        cout << t;
+    }
+    return t;
+}
+
+void ShowGameOverScreen()
+{
+    cout << Tabs(2) <<"__________________________________________________________\n\n";
+    cout << Tabs(2) << " +++ G a m e O v e r +++\n";
+    cout << Tabs(2) <<"__________________________________________________________\n\n";
+}
+
+void ShowFinalGameResults(stGameResults GameResults) {
+    cout << Tabs(2) << "_____________________ [Game Results]_____________________\n\n";
+    cout << Tabs(2) << "Game Rounds             :" << GameResults.GameRounds << endl;
+    cout << Tabs(2) << "Player Won Times        :" << GameResults.PlayerWinTimes << endl;
+    cout << Tabs(2) << "Computer Won Times      :" << GameResults.ComputerWinTimes << endl;
+    cout << Tabs(2) << "Draw Times              :" << GameResults.DrawTimes << endl;
+    cout << Tabs(2) << "Final Winner             :" << GameResults.WinnerName << endl;
+    cout << Tabs(2) << "___________________________________________________________\n";
+    SetWinnerScreenColor(GameResults.GameWinner);
+}
+
+
 
 
 
